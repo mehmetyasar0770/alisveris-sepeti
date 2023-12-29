@@ -8,12 +8,16 @@ const Products = (props) => {
   const totalCartCount = context.state.cart.reduce (
     (total,book) => (total = total + book.count), 0);
 
+    const totalCartAmount = context.state.cart.reduce (
+      (total,book) => (total = total + book.price * book.count), 0).toFixed(2);
+
   return (
     <div>
       <h2>
         <span>Kitap Listesi</span>
         <Link to="/cart">Sepetim ({totalCartCount})</Link>
       </h2>
+      <h3> Toplam Tutar {totalCartAmount} </h3>
 
       {context.state.bookList.map((book) => (
         
